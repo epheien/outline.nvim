@@ -6,6 +6,11 @@ local all_kinds = {'File', 'Module', 'Namespace', 'Package', 'Class', 'Method', 
 -- stylua: ignore end
 
 M.defaults = {
+  view = {
+    filter = function(buf)
+      return vim.api.nvim_buf_get_option(buf, 'buflisted')
+    end
+  },
   guides = {
     enabled = true,
     markers = {
