@@ -172,6 +172,13 @@ Pass a table to the setup call with your configuration options.
 
 ```lua
 {
+  view = {
+    -- A filter function used to determine whether displays outline of the buffer.
+    -- Return false to ignore the buffer.
+    filter = function(buf)
+      return vim.api.nvim_buf_get_option(buf, 'buflisted')
+    end
+  },
   outline_window = {
     -- Where to open the split window: right/left
     position = 'right',
